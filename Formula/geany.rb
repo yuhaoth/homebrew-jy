@@ -1,19 +1,24 @@
 class Geany < Formula
   desc "Basic text editor with IDE support"
   homepage "http://geany.org/"
-  url "http://download.geany.org/geany-1.26.tar.bz2"
-  sha256 "e38530e87c577e1e9806be3b40e08fb9ee321eb1abc6361ddacdad89c825f90d"
+  url "http://download.geany.org/geany-1.28.tar.bz2"
+  version "1.28"
+  sha256 "f73a3708f1a26e9bf72da564d5037d6f7fedca2e0d6175db0681c2b672100a5a"
 
-  bottle do
-    sha256 "586a86aec5d83a673094ad0334a33e8c85d4bf78f18370e1876f7f6617f909b8" => :el_capitan
-    sha256 "62288c061ab23039b4baabd2fd1420b790d38be577e19f9e838d9e4be7960098" => :yosemite
-    sha256 "9d8ee1a345107f4b8b3d594350fd671737b134f12d95136b0bfe9c0e8024ec4a" => :mavericks
-  end
+
 
   depends_on "pkg-config" => :build
   depends_on "intltool" => :build
   depends_on "gettext"
   depends_on "gtk+"
+  depends_on "vte"
+
+  bottle do
+    root_url "http://localhost:5000"
+    prefix "/mnt/fileroot/jerry.yu/linuxbrew/.linuxbrew"
+    cellar "/mnt/fileroot/jerry.yu/linuxbrew/.linuxbrew/Cellar"
+    sha256 "dd13af9c0ff3583cf6351c4d4ab6585c2bc37073b0cee625cd1caa7840987b2e" => :x86_64_linux
+  end
 
   def install
     system "./configure", "--disable-dependency-tracking",
